@@ -115,20 +115,19 @@ p {
 
   function displayReviews(reviews) {
     const reviewsList = document.getElementById('reviews-list');
-    reviewsList.innerHTML = ''; 
+    reviewsList.innerHTML = '';
     reviews.forEach(review => {
       const li = document.createElement('li');
       li.innerHTML = `
         <strong>${review.name}</strong> (Rating: ${review.rating}/5)
         <p>"${review.text}"</p>
-        <button onclick="replyToReview('${review.name}')">Răspunde</button>
       `;
       reviewsList.appendChild(li);
     });
   }
 
   document.querySelector('#review-form').addEventListener('submit', function(event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const name = document.getElementById('user-name').value;
     const reviewText = document.getElementById('review-text').value;
@@ -153,10 +152,6 @@ p {
 
     document.querySelector('#review-form').reset();
   });
-
-  function replyToReview(name) {
-    alert(`Ați ales să răspundeți la recenzia lui ${name}`);
-  }
 </script>
 </body>
 </html>
