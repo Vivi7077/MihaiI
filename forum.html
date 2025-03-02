@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum/Recenzii</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem 0;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #ffcc00;
+}
+
+h1, h2 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="biografie.html">Biografie</a></li>
+                <li><a href="rol.html">Rol</a></li>
+                <li><a href="distinctii.html">Distincții</a></li>
+                <li><a href="functie.html">Funcții</a></li>
+                <li><a href="activitati.html">Activități</a></li>
+                <li><a href="curiozitati.html">Curiozități</a></li>
+                <li><a href="cronologie.html">Cronologie</a></li>
+                <li><a href="teste.html">Teste</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li><a href="bibliografie.html">Bibliografie</a></li>
+            </ul>
+        </nav>
+    </header>
+<main>
+  <h2>Forum & Recenzii</h2>
+  
+  <section id="forum">
+    <h3>Discuții despre Regele Mihai I</h3>
+    <div>
+      <label for="topic">Deschide o discuție:</label>
+      <input type="text" id="topic" name="topic" placeholder="Introducerea unui subiect de discuție">
+      <textarea id="message" name="message" placeholder="Scrie un mesaj pentru forum"></textarea>
+      <button onclick="submitForumPost()">Postează discuția</button>
+    </div>
+    <div id="forum-posts">
+    </div>
+  </section>
+  
+  <section id="reviews">
+    <h3>Lasă o recenzie</h3>
+    <div>
+      <label for="review-title">Titlul recenziei:</label>
+      <input type="text" id="review-title" name="review-title" placeholder="Introducerea titlului recenziei">
+      
+      <label for="review-text">Recenzia:</label>
+      <textarea id="review-text" name="review-text" placeholder="Scrie o recenzie despre Regele Mihai I"></textarea>
+      
+      <button onclick="submitReview()">Postează recenzia</button>
+    </div>
+    <div id="reviews-list">
+    </div>
+  </section>
+  
+  <script>
+    function submitForumPost() {
+      const topic = document.getElementById('topic').value;
+      const message = document.getElementById('message').value;
+      const post = `<div><h4>${topic}</h4><p>${message}</p></div>`;
+      document.getElementById('forum-posts').innerHTML += post;
+      document.getElementById('topic').value = '';
+      document.getElementById('message').value = '';
+    }
+    
+    function submitReview() {
+      const title = document.getElementById('review-title').value;
+      const reviewText = document.getElementById('review-text').value;
+      const review = `<div><h4>${title}</h4><p>${reviewText}</p></div>`;
+      document.getElementById('reviews-list').innerHTML += review;
+      document.getElementById('review-title').value = '';
+      document.getElementById('review-text').value = '';
+    }
+  </script>
+</main>
+</body>
+</html>
