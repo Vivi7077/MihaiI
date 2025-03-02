@@ -85,6 +85,7 @@ p {
         <li><input type="radio" name="q1" value="3"> România a aderat la Pactul Tripartit</li>
         <li><input type="radio" name="q1" value="4"> Regele Mihai I s-a căsătorit cu Ana de Bourbon-Parma</li>
       </ul>
+      <p id="feedback-q1"></p>
     </li>
     <li>
       <p>Care a fost primul guvern comunist numit în România?</p>
@@ -94,6 +95,7 @@ p {
         <li><input type="radio" name="q2" value="3"> Guvernul Ion Antonescu</li>
         <li><input type="radio" name="q2" value="4"> Guvernul Mihail Kogălniceanu</li>
       </ul>
+      <p id="feedback-q2"></p>
     </li>
     <li>
       <p>În ce an s-a întors Regele Mihai I definitiv în România?</p>
@@ -103,6 +105,7 @@ p {
         <li><input type="radio" name="q3" value="3"> 2000</li>
         <li><input type="radio" name="q3" value="4"> 1989</li>
       </ul>
+      <p id="feedback-q3"></p>
     </li>
   </ol>
 
@@ -114,6 +117,7 @@ p {
         <li><input type="radio" name="q4" value="Adevărat"> Adevărat</li>
         <li><input type="radio" name="q4" value="Fals"> Fals</li>
       </ul>
+      <p id="feedback-q4"></p>
     </li>
     <li>
       <p>Regele Mihai I a semnat Pactul de la Moscova în 1944, la întâlnirea cu Stalin.</p>
@@ -121,6 +125,7 @@ p {
         <li><input type="radio" name="q5" value="Adevărat"> Adevărat</li>
         <li><input type="radio" name="q5" value="Fals"> Fals</li>
       </ul>
+      <p id="feedback-q5"></p>
     </li>
     <li>
       <p>Regele Mihai I a fost înlăturat de la tron de tatăl său, Carol al II-lea, pentru a fi restaurată monarhia în 1930.</p>
@@ -128,12 +133,11 @@ p {
         <li><input type="radio" name="q6" value="Adevărat"> Adevărat</li>
         <li><input type="radio" name="q6" value="Fals"> Fals</li>
       </ul>
+      <p id="feedback-q6"></p>
     </li>
   </ol>
 
   <button onclick="validateAnswers()">Verifică răspunsurile</button>
-
-  <p id="result"></p>
 
   <h3>3. Întrebări deschise:</h3>
   <ol>
@@ -188,43 +192,81 @@ p {
 </main>
 
 <script>
-function validateAnswers() {
-  let score = 0;
+  function validateAnswers() {
+    // Multiple choice questions
+    const q1Answer = document.querySelector('input[name="q1"]:checked');
+    if (q1Answer) {
+      const feedbackQ1 = document.getElementById('feedback-q1');
+      if (q1Answer.value === "1") {
+        feedbackQ1.textContent = "Corect! Regele Mihai I a întors armele împotriva Germaniei naziste în 1944.";
+        feedbackQ1.style.color = "green";
+      } else {
+        feedbackQ1.textContent = "Greșit! Răspunsul corect este: Regele Mihai I a întors armele împotriva Germaniei naziste.";
+        feedbackQ1.style.color = "red";
+      }
+    }
 
-  // Multiple choice questions
-  const q1Answer = document.querySelector('input[name="q1"]:checked');
-  if (q1Answer && q1Answer.value === "1") {
-    score++;
+    const q2Answer = document.querySelector('input[name="q2"]:checked');
+    if (q2Answer) {
+      const feedbackQ2 = document.getElementById('feedback-q2');
+      if (q2Answer.value === "1") {
+        feedbackQ2.textContent = "Corect! Guvernul Petru Groza a fost primul guvern comunist din România.";
+        feedbackQ2.style.color = "green";
+      } else {
+        feedbackQ2.textContent = "Greșit! Răspunsul corect este: Guvernul Petru Groza.";
+        feedbackQ2.style.color = "red";
+      }
+    }
+
+    const q3Answer = document.querySelector('input[name="q3"]:checked');
+    if (q3Answer) {
+      const feedbackQ3 = document.getElementById('feedback-q3');
+      if (q3Answer.value === "2") {
+        feedbackQ3.textContent = "Corect! Regele Mihai I s-a întors definitiv în România în 1997.";
+        feedbackQ3.style.color = "green";
+      } else {
+        feedbackQ3.textContent = "Greșit! Răspunsul corect este: 1997.";
+        feedbackQ3.style.color = "red";
+      }
+    }
+
+    // True/False questions
+    const q4Answer = document.querySelector('input[name="q4"]:checked');
+    if (q4Answer) {
+      const feedbackQ4 = document.getElementById('feedback-q4');
+      if (q4Answer.value === "Adevărat") {
+        feedbackQ4.textContent = "Corect! Regele Mihai I a fost forțat să abdice în 1947.";
+        feedbackQ4.style.color = "green";
+      } else {
+        feedbackQ4.textContent = "Greșit! Răspunsul corect este: Adevărat.";
+        feedbackQ4.style.color = "red";
+      }
+    }
+
+    const q5Answer = document.querySelector('input[name="q5"]:checked');
+    if (q5Answer) {
+      const feedbackQ5 = document.getElementById('feedback-q5');
+      if (q5Answer.value === "Fals") {
+        feedbackQ5.textContent = "Corect! Regele Mihai I nu a semnat Pactul de la Moscova.";
+        feedbackQ5.style.color = "green";
+      } else {
+        feedbackQ5.textContent = "Greșit! Răspunsul corect este: Fals.";
+        feedbackQ5.style.color = "red";
+      }
+    }
+
+    const q6Answer = document.querySelector('input[name="q6"]:checked');
+    if (q6Answer) {
+      const feedbackQ6 = document.getElementById('feedback-q6');
+      if (q6Answer.value === "Fals") {
+        feedbackQ6.textContent = "Corect! Regele Mihai I nu a fost înlăturat de tatăl său în 1930.";
+        feedbackQ6.style.color = "green";
+      } else {
+        feedbackQ6.textContent = "Greșit! Răspunsul corect este: Fals.";
+        feedbackQ6.style.color = "red";
+      }
+    }
   }
-
-  const q2Answer = document.querySelector('input[name="q2"]:checked');
-  if (q2Answer && q2Answer.value === "1") {
-    score++;
-  }
-
-  const q3Answer = document.querySelector('input[name="q3"]:checked');
-  if (q3Answer && q3Answer.value === "2") {
-    score++;
-  }
-
-  // True/False questions
-  const q4Answer = document.querySelector('input[name="q4"]:checked');
-  if (q4Answer && q4Answer.value === "Adevărat") {
-    score++;
-  }
-
-  const q5Answer = document.querySelector('input[name="q5"]:checked');
-  if (q5Answer && q5Answer.value === "Fals") {
-    score++;
-  }
-
-  const q6Answer = document.querySelector('input[name="q6"]:checked');
-  if (q6Answer && q6Answer.value === "Fals") {
-    score++;
-  }
-
-  document.getElementById("result").innerText = "Ai obținut " + score + " puncte!";
-}
-</script>
+  </script>
 </body>
 </html>
