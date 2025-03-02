@@ -74,62 +74,66 @@ p {
             </ul>
         </nav>
     </header>
-    <main>
+        <main>
   <h3>1. Întrebări de alegere multiplă:</h3>
-  <ol>
+  <ol id="q1">
     <li>
       <p>Care dintre următoarele evenimente a avut loc în 1944?</p>
       <ul>
-        <li>1. Regele Mihai I a întors armele împotriva Germaniei naziste</li>
-        <li>2. Regele Mihai I a fost detronat de tatăl său</li>
-        <li>3. România a aderat la Pactul Tripartit</li>
-        <li>4. Regele Mihai I s-a căsătorit cu Ana de Bourbon-Parma</li>
+        <li><input type="radio" name="q1" value="1"> Regele Mihai I a întors armele împotriva Germaniei naziste</li>
+        <li><input type="radio" name="q1" value="2"> Regele Mihai I a fost detronat de tatăl său</li>
+        <li><input type="radio" name="q1" value="3"> România a aderat la Pactul Tripartit</li>
+        <li><input type="radio" name="q1" value="4"> Regele Mihai I s-a căsătorit cu Ana de Bourbon-Parma</li>
       </ul>
     </li>
     <li>
       <p>Care a fost primul guvern comunist numit în România?</p>
       <ul>
-        <li>1. Guvernul Petru Groza</li>
-        <li>2. Guvernul Nicolae Rădescu</li>
-        <li>3. Guvernul Ion Antonescu</li>
-        <li>4. Guvernul Mihail Kogălniceanu</li>
+        <li><input type="radio" name="q2" value="1">1. Guvernul Petru Groza</li>
+        <li><input type="radio" name="q2" value="2">2. Guvernul Nicolae Rădescu</li>
+        <li><input type="radio" name="q2" value="3">3. Guvernul Ion Antonescu</li>
+        <li><input type="radio" name="q2" value="4">4. Guvernul Mihail Kogălniceanu</li>
       </ul>
     </li>
     <li>
       <p>În ce an s-a întors Regele Mihai I definitiv în România?</p>
       <ul>
-        <li>1. 1990</li>
-        <li>2. 1997</li>
-        <li>3. 2000</li>
-        <li>4. 1989</li>
+        <li><input type="radio" name="q3" value="1">1. 1990</li>
+        <li><input type="radio" name="q3" value="2">2. 1997</li>
+        <li><input type="radio" name="q3" value="3">3. 2000</li>
+        <li><input type="radio" name="q3" value="4">4. 1989</li>
       </ul>
     </li>
   </ol>
 
   <h3>2. Întrebări cu adevărat/fals:</h3>
-  <ol>
+  <ol id="q4">
     <li>
       <p>Regele Mihai I a fost forțat să abdice în 1947, sub presiunea regimului comunist și a armatei sovietice.</p>
       <ul>
-        <li>Adevărat</li>
-        <li>Fals</li>
+        <li><input type="radio" name="q4" value="Adevărat"> Adevărat</li>
+        <li><input type="radio" name="q4" value="Fals"> Fals</li>
       </ul>
     </li>
     <li>
       <p>Regele Mihai I a semnat Pactul de la Moscova în 1944, la întâlnirea cu Stalin.</p>
       <ul>
-        <li>Adevărat</li>
-        <li>Fals</li>
+        <li><input type="radio" name="q5" value="Adevărat">Adevărat</li>
+        <li><input type="radio" name="q5" value="Fals">Fals</li>
       </ul>
     </li>
     <li>
       <p>Regele Mihai I a fost înlăturat de la tron de tatăl său, Carol al II-lea, pentru a fi restaurată monarhia în 1930.</p>
       <ul>
-        <li>Adevărat</li>
-        <li>Fals</li>
+        <li><input type="radio" name="q6" value="Adevărat">Adevărat</li>
+        <li><input type="radio" name="q6" value="Fals">Fals</li>
       </ul>
     </li>
   </ol>
+
+  <button onclick="validateAnswers()">Verifică răspunsurile</button>
+
+  <p id="result"></p>
 
   <h3>3. Întrebări deschise:</h3>
   <ol>
@@ -205,5 +209,28 @@ p {
     <li>Crează o hartă a României din perioada celui de-Al Doilea Război Mondial și marchează principalele locuri unde Regele Mihai I a avut un rol important (de exemplu, întâlnirea cu Hitler, întâlnirile cu liderii sovietici etc.).</li>
   </ul>
 </main>
+
+<script>
+function validateAnswers() {
+    let score = 0;
+
+    let q1Answer = document.querySelector('input[name="q1"]:checked');
+    if (q1Answer && q1Answer.value === "1") {
+        score++;
+    }
+
+    let q2Answer = document.querySelector('input[name="q2"]:checked');
+    if (q2Answer && q2Answer.value === "Adevărat") {
+        score++;
+    }
+
+    let q3Answer = document.querySelector('input[name="q3"]:checked');
+    if (q3Answer && q3Answer.value === "2") {
+        score++;
+    }
+
+    document.getElementById("result").innerText = "Ai obținut " + score + " puncte!";
+}
+</script>
 </body>
 </html>
