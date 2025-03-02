@@ -104,30 +104,59 @@ p {
   </form>
 
   <h3>Recenzii recente</h3>
-  <ul>
-    <li>
-      <strong>Ion Popescu</strong> (Rating: 5/5)
-      <p>"Regele Mihai a fost o personalitate deosebită, care a influențat destinul României în momentele cheie ale istoriei. A fost un simbol al unității și al demnității."</p>
-      <button>Răspunde</button>
-    </li>
-    <li>
-      <strong>Maria Ionescu</strong> (Rating: 4/5)
-      <p>"O viață marcată de sacrificii și responsabilități. Aș fi dorit să aflu mai multe despre deciziile sale politice din exil."</p>
-      <button>Răspunde</button>
-    </li>
+  <ul id="reviews-list">
   </ul>
 </main>
  <script>
+  window.onload = function() {
+    const savedReviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    displayReviews(savedReviews);
+  };
+
+  function displayReviews(reviews) {
+    const reviewsList = document.getElementById('reviews-list');
+    reviewsList.innerHTML = ''; 
+    reviews.forEach(review => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <strong>${review.name}</strong> (Rating: ${review.rating}/5)
+        <p>"${review.text}"</p>
+        <button onclick="replyToReview('${review.name}')">Răspunde</button>
+      `;
+      reviewsList.appendChild(li);
+    });
+  }
+
   document.querySelector('#review-form').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
     const name = document.getElementById('user-name').value;
-    const review = document.getElementById('review-text').value;
+    const reviewText = document.getElementById('review-text').value;
     const rating = document.getElementById('rating').value;
 
-    if (!name || !review || !rating) {
+    if (!name || !reviewText || !rating) {
       alert("Toate câmpurile sunt obligatorii!");
-      event.preventDefault();
+      return;
     }
+
+    const newReview = {
+      name: name,
+      text: reviewText,
+      rating: rating
+    };
+
+    const savedReviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    savedReviews.push(newReview);
+    localStorage.setItem('reviews', JSON.stringify(savedReviews));
+
+    displayReviews(savedReviews);
+
+    document.querySelector('#review-form').reset();
   });
+
+  function replyToReview(name) {
+    alert(`Ați ales să răspundeți la recenzia lui ${name}`);
+  }
 </script>
 </body>
 </html>
