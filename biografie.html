@@ -14,56 +14,45 @@
 
 header {
     background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
+    color: white;
+    padding: 1rem 0;
 }
 
-header nav ul {
+nav ul {
     list-style-type: none;
     display: flex;
     justify-content: center;
-    gap: 20px;
 }
 
-header nav ul li {
-    display: inline;
+nav ul li {
+    margin: 0 20px;
 }
 
-header nav ul li a {
+nav ul li a {
+    color: white;
     text-decoration: none;
-    color: #fff;
-    padding: 8px 16px;
-    transition: background-color 0.3s ease;
+    font-size: 18px;
+    transition: color 0.3s;
 }
 
-header nav ul li a:hover,
-header nav ul li a.active {
-    background-color: #555;
+nav ul li a:hover,
+nav ul li a.active {
+    color: #ffcc00;
+}
+
+h1, h2 {
+    color: #333;
+    margin-bottom: 1rem;
 }
 
 main {
-    padding: 20px;
+    padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-#biografie h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #1e1e1e;
-}
-
-#biografie h2 {
-    font-size: 1.8rem;
-    margin-top: 20px;
-    color: #333;
-}
-
-#biografie p {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-    text-align: justify;
+p {
+    margin-bottom: 1.5rem;
 }
     </style>
 </head>
@@ -72,8 +61,8 @@ main {
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="biografie.html" class="active">Biografie</a></li>
-                <li><a href="rol.html">Rol</a></li>
+                <li><a href="biografie.html">Biografie</a></li>
+                <li><a href="rol.html" class="active">Rol</a></li>
                 <li><a href="distinctii.html">Distincții</a></li>
                 <li><a href="functie.html">Funcții</a></li>
                 <li><a href="activitati.html">Activități</a></li>
